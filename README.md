@@ -42,3 +42,6 @@ IV. Building Backend
 3. create backend folder
 
 - server.js
+  node server.js
+  to have nice view in localhost back end add JSON viewer to Chrome
+- copy data from frontend to backend and return products in server
