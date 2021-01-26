@@ -21,3 +21,24 @@ II. Create React App
 - copy images to public
 - create data.js
 - use map function to convert data to app.js and update static to dynamic
+
+III. Create components & Create Route for frontend
+
+1. Product and Rating
+2. npm i react-router-dom
+
+- <BrowserRouter></BrowserRouter>
+- Route-component
+  .HomeScreen
+  .ProductScreen
+
+IV. Building Backend
+
+1. npm init --yes
+
+- package.json(adding "type": "module")
+
+2. npm i express (using express to build web server)
+3. create backend folder
+
+- server.js

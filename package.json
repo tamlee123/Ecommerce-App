@@ -1,0 +1,24 @@
+{
+  "name": "sleep-well",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "I. Create template for",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamlee123/Ecommerce-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamlee123/Ecommerce-App/issues"
+  },
+  "homepage": "https://github.com/tamlee123/Ecommerce-App#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
