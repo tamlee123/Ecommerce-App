@@ -1,12 +1,12 @@
  const data = {
     products: [
         {   _id: '1',
-            name: 'Floral Pintuck Comforter Set',
+            name: 'Versace Comforter Set',
             catgory: 'Bed set',
-            image: '/images/p1.jpg',
+            image: '/images/p6.jpg',
             price: 75,
             countInStock: 20,
-            brand: 'Madison',
+            brand: 'Versace',
             rating: 4,
             numReviews: 9,
             description: 'high quality product',
@@ -14,9 +14,9 @@
 
         {
             _id: '2',
-            name: 'Classic Core Sheet Set',
+            name: 'Duvet Sheet Set',
             catgory: 'Bed Sheet',
-            image: '/images/p9.jpg',
+            image: '/images/p8.jpg',
             price: 139,
             countInStock: 15,
             brand: 'brooklinen',
@@ -27,9 +27,9 @@
 
         {
             _id: '3',
-            name: 'Essential Cotton Sheet Set',
+            name: 'Essential Silky Sheet Set',
             catgory: 'Bed Sheet',
-            image: '/images/p6.jpg',
+            image: '/images/p2.jpg',
             price: 129,
             countInStock: 35,
             brand: 'Resident',
@@ -39,12 +39,12 @@
         },
         {
             _id: '4',
-            name: '3D Oil Red Rose Comforter Set',
+            name: 'Burberry Comforter Set',
             catgory: 'Bed Set',
-            image: '/images/p4.jpg',
+            image: '/images/p3.jpg',
             price: 120,
-            countInStock: 15,
-            brand: 'EsyDream',
+            countInStock: 0,
+            brand: 'Burberry',
             rating: 4.5,
             numReviews: 10,
             description: 'high quality product',
