@@ -10,6 +10,12 @@ I. Create template for
 2. style.css
 3. images
 
-II. Create React App 1. npx create-react-app frontend
-"# Ecommerce-App" 
-"# Ecommerce-App" 
+II. Create React App
+
+1. npx create-react-app frontend
+2. convert template to frontend
+
+- delete src/App.css, App.test.js, logo.svg, setupTest.js
+- copy div from index.html to App.js-replace class to className
+- copy content in style.css to index.css
+- copy images to public
