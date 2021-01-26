@@ -1,4 +1,4 @@
-export default  {
+ const data = {
     products: [
         {   _id: '1',
             name: 'Floral Pintuck Comforter Set',
@@ -7,7 +7,8 @@ export default  {
             price: 75,
             brand: 'Madison',
             rating: 4,
-            numReviews: 9
+            numReviews: 9,
+            description: 'high quality product',
         },
 
         {
@@ -18,7 +19,8 @@ export default  {
             price: 139,
             brand: 'brooklinen',
             rating: 4.2,
-            numReviews: 8
+            numReviews: 8,
+            description: 'high quality product',
         },
 
         {
@@ -29,7 +31,8 @@ export default  {
             price: 129,
             brand: 'Resident',
             rating: 4.5,
-            numReviews: 10
+            numReviews: 10,
+            description: 'high quality product',
         },
         {
             _id: '4',
@@ -39,7 +42,8 @@ export default  {
             price: 120,
             brand: 'EsyDream',
             rating: 4.5,
-            numReviews: 10
+            numReviews: 10,
+            description: 'high quality product',
         },
         {
             _id: '5',
@@ -49,7 +53,8 @@ export default  {
             price: 150,
             brand: 'Dior',
             rating: 5,
-            numReviews: 10
+            numReviews: 10,
+            description: 'high quality product',
         },
         {
             _id: '6',
@@ -59,7 +64,9 @@ export default  {
             price: 99,
             brand: 'West elm',
             rating: 5,
-            numReviews: 10
+            numReviews: 10,
+            description: 'high quality product',
         },
-    ]
+    ],
 };
+export default data;

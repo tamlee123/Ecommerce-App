@@ -19,3 +19,5 @@ II. Create React App
 - copy div from index.html to App.js-replace class to className
 - copy content in style.css to index.css
 - copy images to public
+- create data.js
+- use map function to convert data to app.js and update static to dynamic
