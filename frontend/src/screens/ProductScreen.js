@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import data from '../data';
 import Rating from './../components/Rating';
 
@@ -9,6 +10,7 @@ function ProductScreen(props) {
     }
     return (
         <div>
+            <Link to="/">Back to Result</Link>
             <div className="row top">
                 <div className="col-2">
                     <img className="large" src={product.image} alt={product.name}></img>
@@ -50,7 +52,7 @@ function ProductScreen(props) {
                                     {product.countInStock >0 ? (
                                         <span className="success">In Stock</span>
                                     ) : (
-                                        <span className="error">Unavailable</span>
+                                        <span className="danger">Unavailable</span>
                                     )
                                     }
                                 </div>
