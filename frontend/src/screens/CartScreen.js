@@ -18,6 +18,9 @@ function CartScreen(props) {
     }
   }, [dispatch, productId, qty]);
   const removeFromCartHandler = (id) => {};
+  const checkoutHandler = () => {
+    props.history.push("/signin?redirect=shipping");
+  };
   return (
     <div className="row top">
       <div className="col-2">
@@ -46,8 +49,7 @@ function CartScreen(props) {
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(
-                          addToCart(item.product),
-                          Number(e.target.value)
+                          addToCart(item.product, Number(e.target.value))
                         )
                       }
                     >
@@ -72,6 +74,28 @@ function CartScreen(props) {
             ))}
           </ul>
         )}
+      </div>
+      <div className="col-1">
+        <div className="card card-body">
+          <ul>
+            <li>
+              <h2>
+                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+              </h2>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={checkoutHandler}
+                className="primary block"
+                disabled={cartItems.length === 0}
+              >
+                Proceed to Checkout
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
