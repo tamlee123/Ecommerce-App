@@ -16,9 +16,8 @@ const data = {
   ],
   products: [
     {
-      _id: "1",
       name: "Versace Comforter Set",
-      catgory: "Bed set",
+      category: "Bed set",
       image: "/images/p6.jpg",
       price: 75,
       countInStock: 20,
@@ -29,9 +28,8 @@ const data = {
     },
 
     {
-      _id: "2",
       name: "Duvet Sheet Set",
-      catgory: "Bed Sheet",
+      category: "Bed Sheet",
       image: "/images/p8.jpg",
       price: 139,
       countInStock: 15,
@@ -42,9 +40,8 @@ const data = {
     },
 
     {
-      _id: "3",
       name: "Essential Silky Sheet Set",
-      catgory: "Bed Sheet",
+      category: "Bed Sheet",
       image: "/images/p2.jpg",
       price: 129,
       countInStock: 35,
@@ -54,9 +51,8 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "4",
       name: "Burberry Comforter Set",
-      catgory: "Bed Set",
+      category: "Bed Set",
       image: "/images/p3.jpg",
       price: 120,
       countInStock: 0,
@@ -66,9 +62,8 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "5",
       name: "Dior luxury Comforter Set",
-      catgory: "bed Set",
+      category: "bed Set",
       image: "/images/p5.jpg",
       price: 150,
       countInStock: 20,
@@ -78,9 +73,8 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "6",
       name: "Bobble Knit Pillow Covers",
-      catgory: "Pillow Covers",
+      category: "Pillow Covers",
       image: "/images/p7.jpg",
       price: 99,
       countInStock: 20,
