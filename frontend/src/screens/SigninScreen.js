@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signin } from "./../actions/userActions";
 
 function SigninScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(signin(email, password));
   };
   return (
     <div>
@@ -14,7 +19,7 @@ function SigninScreen() {
           <h1>Sign In</h1>
         </div>
         <div>
-          <lable htmlFor="email">Email address</lable>
+          <label htmlFor="email">Email address</label>
           <input
             type="email"
             id="email"
@@ -25,7 +30,7 @@ function SigninScreen() {
         </div>
 
         <div>
-          <lable htmlFor="password">Password</lable>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
