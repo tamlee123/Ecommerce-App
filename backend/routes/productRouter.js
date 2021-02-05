@@ -4,7 +4,7 @@ import data from "../data.js";
 import Product from "../models/productModel.js";
 
 const productRouter = express.Router();
-
+//sending list of products to frontend
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
@@ -12,7 +12,7 @@ productRouter.get(
     res.send(products);
   })
 );
-
+//create products in mongodb
 productRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
@@ -21,6 +21,7 @@ productRouter.get(
   })
 );
 
+//sending detail of product to the frontend
 productRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
