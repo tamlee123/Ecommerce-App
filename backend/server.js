@@ -1,8 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
-import dotenv from "dotenv";
 import orderRouter from "./routes/orderRouter.js";
 
 dotenv.config();
@@ -16,11 +16,11 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/sleep-well", {
 });
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
-app.use("/api/order", orderRouter);
+app.use("/api/orders", orderRouter);
 app.get("/", (req, res) => {
   res.send("Server is ready");
 });
-app.use((err, rq, res, next) => {
+app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
