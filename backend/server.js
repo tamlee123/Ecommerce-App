@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
 import orderRouter from "./routes/orderRouter.js";
@@ -14,9 +15,14 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/sleep-well", {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+});
 app.get("/", (req, res) => {
   res.send("Server is ready");
 });
