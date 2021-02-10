@@ -6,7 +6,11 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_FAIL,
+  PRODUCT_CREATE_SUCCESS,
 } from "./../constants/productConstant";
+
 export const listProducts = () => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
@@ -35,5 +39,31 @@ export const detailsProduct = (productId) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
+  }
+};
+
+export const createProduct = () => async (dispatch, getState) => {
+  dispatch({ type: PRODUCT_CREATE_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await axios.post(
+      "/api/products",
+      {},
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      }
+    );
+    dispatch({
+      type: PRODUCT_CREATE_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: PRODUCT_CREATE_FAIL, payload: message });
   }
 };
