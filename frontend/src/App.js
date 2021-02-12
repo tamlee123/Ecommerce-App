@@ -110,7 +110,7 @@ function App() {
             component={ProfileScreen}
           ></PrivateRoute>
           <AdminRoute
-            path="/productList"
+            path="/productlist"
             component={ProductListScreen}
           ></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
