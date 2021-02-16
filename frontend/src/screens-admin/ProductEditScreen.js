@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsProduct, updateProduct } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
@@ -58,6 +59,31 @@ function ProductEditScreen(props) {
       })
     );
   };
+
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState("");
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const handleUploadFile = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await axios.post("/api/uploads", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setImage(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+  };
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -93,16 +119,18 @@ function ProductEditScreen(props) {
                 onChange={(e) => setImage(e.target.value)}
               ></input>
             </div>
-
             <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="imageFile">Image File</label>
               <input
-                id="price"
-                type="text"
-                placeholder="Enter price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={handleUploadFile}
               ></input>
+              {loadingUpload && <LoadingBox></LoadingBox>}
+              {errorUpload && (
+                <MessageBox variant="danger">{errorUpload}</MessageBox>
+              )}
             </div>
 
             <div>
