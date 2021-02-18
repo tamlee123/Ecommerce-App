@@ -44,6 +44,7 @@ function ProductEditScreen(props) {
       setDescription(product.description);
     }
   }, [product, dispatch, productId, successUpdate, props.history]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -65,6 +66,7 @@ function ProductEditScreen(props) {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
   const handleUploadFile = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();

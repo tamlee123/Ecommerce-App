@@ -1,4 +1,4 @@
-I. Create template for
+I. Create template for sleep-well
 
 1. index.html(link to style.css)
 
@@ -22,7 +22,7 @@ II. Create React App
 - create data.js
 - use map function to convert data to app.js and update static to dynamic
 
-III. Create components & Create Route for frontend
+III. Create components for products & Their Route
 
 1. Product and Rating
 2. npm i react-router-dom
@@ -39,9 +39,211 @@ IV. Building Backend
 - package.json(adding "type": "module")
 
 2. npm i express (using express to build web server)
+
 3. create backend folder
 
 - server.js
   node server.js
-  to have nice view in localhost back end add JSON viewer to Chrome
+  to have nice view in localhost back end => add JSON viewer to Chrome
 - copy data from frontend to backend and return products in server
+- npm i nodemon --save-dev
+  package.json: "scripts": {
+  "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  } => npm start
+  - create api address for HomeScreen and ProductScreen
+
+V. Fetching data from backend server api to frontend
+
+- setting proxy in frontend package.json
+- npm i axios
+- showing signal loading... or error while fetching
+
+VI. Redux
+
+1. Install redux for frontend
+
+   - npm i redux react-redux
+
+2. create src/store.js
+3. npm i redux-thunk
+4. adding redux to developer tools
+5. creating redux cycle for components
+
+   - useSelector() function which has redux state as a parameter to get actions
+   - useDispatch() is a hook that we can dispatch any redux action in components
+
+VII. Handle Events in ProductScreen and create components for cart -frontend
+
+1. handle addToCart
+
+- onChange setQty
+- onClick addToCartHandler
+
+2. create CartScreen componment and add it to App.js
+3. implement CartScreen
+
+- img,name, qty, price & delete button
+- subtotal of items and price, button proceed to checkout
+- implement handleCheckout to redirect users to shipping
+
+VIII. Connect to MongoDB - backend
+
+1. npm i mongoose
+2. creat model and router for user then add user router to server
+
+- in the root folder: npm i jsonwebtoken & npm i dotenv
+- define generateToken
+- Create userRouter.post for signin
+
+3. connect server to mongodb
+4. create model and router for product then add product router to server
+
+VIV. create SigninScreen -frontend & adding Sign Out Link on the app header
+
+1. form-event handleSubmit-render email and password
+2. create redux cycle tasks for signin
+3. implement handleSubmit to redirect users to HomeScreen
+4. adding Sign Out Link to the app header
+
+- create signout action
+
+X. backend and frontend for register
+
+1. create router for register-backend
+2. create RegisterScreen and add it to app-frontend
+
+- form-event handleSunmit-render name, email, password and confirm password
+- create redux task for RegisterScreen-constant,action,reducer
+
+XI. ShippingAddressScreen
+
+1. create steps for checkout
+2. create ShippingAddressScreen
+
+- add route component ShippingAddressScreen in app.js
+- add checkoutSteps on the header of the page
+- create a form of full name, address, city, postal code, country and a continue button
+- create redux tasks-constant, action-saveShippingAddress and reducer, store
+- implement continue button redirect to payment page
+
+XII. PaymentMethodScreen
+
+1. create PaymentMethodScreen and add it to app
+
+- add CheckoutSteps on the header of the page
+- create a form of input label for paypal and stripe
+- create redux tasks constants, action-savePaymentMethod, reducer, store
+- implement continue button redirect to placeorder page
+- redirect user to shipping page if user have not enter shipping address
+
+XIII. PlaceOrderScreen-frontend and Place Order API-backend
+
+1. create PlaceOrderScreen and add it to app
+
+- add CheckoutSteps on the header of the page
+- create a row with 2 colms
+  - col-2: shipping & payment info
+  - col-1: summary order with a place order button
+- create redux tasks-constants,action-createOrder,reducer, store
+
+2. create Place Order API-createOrder
+
+- orderModel, orderRouter.post('/')
+- add orderRouter to server
+- create middleware isAuth in utils to authenticate req
+
+XIV. OrderScreen-frontend & Order Screen API-backend
+
+1. create OrderScreen and add it to app
+
+- create row with columns of shipping + payment info and summary order
+- create redux tasks-constants,action-detailsOrder,reducer, store
+
+2. create Order Screen API-detailsOrder
+
+- orderRouter.get('/:id)
+
+3. Implement paypal button in OrderScreen
+   frontend
+
+- getting Client Id for paypal from developer.paypal.com
+- add Client Id in .env of the app
+- npm i react-paypal-button-v2 in frontend
+- create redux tasks constants,action-payOrder, reducer, store
+
+backend
+
+- create api address for paypal client id in server-backend
+- add more properties for orderModel and create orderRouter.put('/:id/pay')
+
+XV. Implement OrderHistoryScreen
+
+1. backend
+
+- create api address to get list of history order-orderRouter.get(
+  "/mylist")
+
+2. frontend
+
+- create OrderHistoryScreen and add it to app
+- render a table of ID,DATE,TOTAL,PAID,DELIVERED AND ACTIONS
+- create redux tasks constants, action-listMyOrder, reducer, store
+- apply redux tasks using useSelector and useEffect
+- design table in index.css
+
+XVI. Implement ProfileScreen
+
+1. backend
+
+- create api address to get user-userRouter.get('/:id')
+- create api address to update user-userRouter.put('/profile')
+
+2. frontend
+
+- create ProfileScreen and add it to app
+- render a form of Name, Email, Password, Confirm Password with a handleSubmit event
+- create redux tasks constants, action-detailsUser, reducer, store
+- apply redux tasks using useSelector and useEffect
+- create jsconfig.json to auto import functionality in react project
+- implement handleSubmit event:
+
+* create redux tasks constant, action-updateUserProfile, reducer, store
+* apply redux tasks using useSelector and useEffect
+* create component PrivateRoute.js to avoid error because unauthenticated user should not see ProfileScreen
+
+XVII. Admin view
+
+- frontend
+
+1.  adding another dropdown in the header of the app for only admin to see that renders Dashboard, Products,Orders, User
+2.  create component AdminRoute.js
+3.  create ProductListScreen.js and add it to app.js with AdminRoute
+
+- render a row of a button for create product with handleCreateProduct onClick event, and a table of ID, NAME, PRICE, CATEGORY, BRAND, ACTION and 2 onClick event buttons edit and delete
+- using useSelector and useEffect to get the list of products
+- create redux tasks constants, action-createProduct, reducer, store
+- apply redux tasks using useSelector and useEffect and if successCreate redirect to product.\_id edit page
+
+4. create ProductEditScreen.js
+
+- create a form of Name, Image, Price, Category, Brand, Count In Stock, Description and a Update button
+- implement Update button:
+- create redux tasks constants, action-updateProduct, reducer, store
+- apply redux tasks using useSelector and useEffect and if successUpdate redirect to
+  /productlist
+- implement upload image:
+  . render input imageFile and event handleuploadFile
+  . using append() method of the FormData
+- implement delete button:
+
+
+- backend
+
+1. create isAdmin in utils.js
+2. create api address for creating product-productRouter.post('/')
+3. create api address for updating product-productRouter.put('/:id')
+4. creat api address for uploading image-uploadRouter.post('/)
+   . in the main folder:
+   - npm i multer
+   - create uploads -> file.txt
+     . add the api address for uploading image in server

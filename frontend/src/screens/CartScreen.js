@@ -9,20 +9,25 @@ function CartScreen(props) {
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
+
   const handleDelete = (id) => {
     dispatch(deleteFromCart(id));
   };
+
   const handleCheckout = () => {
     props.history.push("/signin?redirect=shipping");
   };
+
   return (
     <div className="row top">
       <div className="col-2">

@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { createProduct, listProducts } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { PRODUCT_CREATE_RESET } from "../constants/productConstant";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_DELETE_RESET,
+} from "../constants/productConstant";
+import { deleteProduct } from "./../actions/productActions";
 
 function ProductListScreen(props) {
   const productList = useSelector((state) => state.productList);
@@ -17,16 +21,30 @@ function ProductListScreen(props) {
     product: createdProduct,
   } = productCreate;
 
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push(`/product/${createdProduct._id}/edit`);
     }
+    if (successDelete) {
+      dispatch({ type: PRODUCT_DELETE_RESET });
+    }
     dispatch(listProducts());
-  }, [createdProduct, dispatch, props.history, successCreate]);
+  }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
 
-  const handleDelete = () => {};
+  const handleDelete = (product) => {
+    if (window.confirm("Are you sure to delete?")) {
+      dispatch(deleteProduct(product._id));
+    }
+  };
 
   const handleCreateProduct = () => {
     dispatch(createProduct());
@@ -40,8 +58,12 @@ function ProductListScreen(props) {
         </button>
       </div>
 
+      {loadingDelete && <LoadingBox></LoadingBox>}
+      {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
+
       {loadingCreate && <LoadingBox></LoadingBox>}
       {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
+
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
