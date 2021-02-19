@@ -212,6 +212,7 @@ XVI. Implement ProfileScreen
 * create component PrivateRoute.js to avoid error because unauthenticated user should not see ProfileScreen
 
 XVII. Admin view
+Products:
 
 - frontend
 
@@ -224,7 +225,7 @@ XVII. Admin view
 - create redux tasks constants, action-createProduct, reducer, store
 - apply redux tasks using useSelector and useEffect and if successCreate redirect to product.\_id edit page
 
-4. create ProductEditScreen.js
+4. implement edit button-create ProductEditScreen.js
 
 - create a form of Name, Image, Price, Category, Brand, Count In Stock, Description and a Update button
 - implement Update button:
@@ -234,16 +235,27 @@ XVII. Admin view
 - implement upload image:
   . render input imageFile and event handleuploadFile
   . using append() method of the FormData
-- implement delete button:
 
+5. implement delete button:
+   . create redux tasks constanta, action-deleteProduct, reducer, store
+
+Products
 
 - backend
 
 1. create isAdmin in utils.js
 2. create api address for creating product-productRouter.post('/')
 3. create api address for updating product-productRouter.put('/:id')
-4. creat api address for uploading image-uploadRouter.post('/)
+4. create UploadRouter.js
+   . creat api address for uploading image-uploadRouter.post('/)
    . in the main folder:
    - npm i multer
    - create uploads -> file.txt
      . add the api address for uploading image in server
+
+List Orders
+frontend:
+
+backend:
+
+1. create apid address to get all orders - orderRouter.get('/')

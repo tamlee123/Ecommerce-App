@@ -12,6 +12,9 @@ import {
   ORDER_MYLIST_REQUEST,
   ORDER_MYLIST_FAIL,
   ORDER_MYLIST_SUCCESS,
+  ORDER_LIST_REQUEST,
+  ORDER_LIST_FAIL,
+  ORDER_LIST_SUCCESS,
 } from "./../constants/orderConstant";
 import { CART_EMPTY } from "./../constants/cartConstant";
 
@@ -68,9 +71,13 @@ export const payOrder = (order, paymentResult) => async (
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = axios.put(`/api/orders/${order._id}/pay`, paymentResult, {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
+    const { data } = await axios.put(
+      `/api/orders/${order._id}/pay`,
+      paymentResult,
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      }
+    );
     dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
   } catch (error) {
     const message =
@@ -99,5 +106,24 @@ export const listMyOrder = () => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     dispatch({ type: ORDER_MYLIST_FAIL, payload: message });
+  }
+};
+
+export const listOrders = () => async (dispatch, getState) => {
+  dispatch({ type: ORDER_LIST_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await axios.get("/api/orders", {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: ORDER_LIST_FAIL, payload: message });
   }
 };
