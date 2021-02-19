@@ -2,22 +2,39 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { listOrders } from "./../actions/orderActions";
+import { deleteOrder, listOrders } from "./../actions/orderActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import { ORDER_DELETE_RESET } from "./../constants/orderConstant";
 
 const OrderListScreen = (props) => {
   const orderList = useSelector((state) => state.orderList);
   const { loading, error, orders } = orderList;
+
+  const orderDelete = useSelector((state) => state.orderDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = orderDelete;
+
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch({ type: ORDER_DELETE_RESET });
     dispatch(listOrders());
-  }, [dispatch]);
-  const handleDelete = () => {};
+  }, [dispatch, successDelete]);
+
+  const handleDelete = (order) => {
+    if (window.confirm("Are you sure to delete?")) {
+      dispatch(deleteOrder(order._id));
+    }
+  };
   return (
     <div>
       <div>
         <hi1>Orders</hi1>
+        {loadingDelete && <LoadingBox></LoadingBox>}
+        {errorDelete && <MessageBox variant="danger">errorDelete</MessageBox>}
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
