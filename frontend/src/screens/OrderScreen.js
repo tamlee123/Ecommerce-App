@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { deliveryOrder, detailsOrder, payOrder } from "../actions/orderActions";
+import { deliverOrder, detailsOrder, payOrder } from "../actions/orderActions";
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
@@ -71,7 +71,7 @@ function OrderScreen(props) {
   };
 
   const handleDeliver = () => {
-    dispatch(deliveryOrder(order._id));
+    dispatch(deliverOrder(order._id));
   };
 
   return loading ? (
