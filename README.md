@@ -22,9 +22,9 @@ II. Create React App
 - create data.js
 - use map function to convert data to app.js and update static to dynamic
 
-III. Create components for products & Their Route
+III. Create components and building screen
 
-1. Product and Rating
+1. Product.js and Rating.js
 2. npm i react-router-dom
 
 - <BrowserRouter></BrowserRouter>
@@ -72,21 +72,24 @@ VI. Redux
    - useSelector() function which has redux state as a parameter to get actions
    - useDispatch() is a hook that we can dispatch any redux action in components
 
-VII. Handle Events in ProductScreen and create components for cart -frontend
+VII. Handle Events in ProductScreen and building CartScreen
+ProductScreen:
 
 1. handle addToCart
 
 - onChange setQty
 - onClick addToCartHandler
+  CartScreen:
 
-2. create CartScreen componment and add it to App.js
+2. create CartScreen and add it to App.js
 3. implement CartScreen
 
 - img,name, qty, price & delete button
 - subtotal of items and price, button proceed to checkout
 - implement handleCheckout to redirect users to shipping
 
-VIII. Connect to MongoDB - backend
+VIII. Connect to MongoDB
+backend
 
 1. npm i mongoose
 2. creat model and router for user then add user router to server
@@ -98,26 +101,34 @@ VIII. Connect to MongoDB - backend
 3. connect server to mongodb
 4. create model and router for product then add product router to server
 
-VIV. create SigninScreen -frontend & adding Sign Out Link on the app header
+VIV. create SigninScreen & adding Sign Out Link on the app header
+frontend
+SigninScreen:
 
 1. form-event handleSubmit-render email and password
-2. create redux cycle tasks for signin
+2. create redux cycle tasks-constants,action-signin,reducer,store for signin
 3. implement handleSubmit to redirect users to HomeScreen
 4. adding Sign Out Link to the app header
 
 - create signout action
 
-X. backend and frontend for register
+X. RegisterScreen
+backend
 
-1. create router for register-backend
-2. create RegisterScreen and add it to app-frontend
+1. create router for register-userRouter.post(
+   "/register")
+
+frontend
+
+1. create RegisterScreen and add it to app-frontend
 
 - form-event handleSunmit-render name, email, password and confirm password
-- create redux task for RegisterScreen-constant,action,reducer
+- create redux task for RegisterScreen-constant,action-register,reducer, store
 
 XI. ShippingAddressScreen
+frontend
 
-1. create steps for checkout
+1. create steps for checkout-CheckoutSteps.js
 2. create ShippingAddressScreen
 
 - add route component ShippingAddressScreen in app.js
@@ -127,6 +138,7 @@ XI. ShippingAddressScreen
 - implement continue button redirect to payment page
 
 XII. PaymentMethodScreen
+frontend
 
 1. create PaymentMethodScreen and add it to app
 
@@ -136,7 +148,8 @@ XII. PaymentMethodScreen
 - implement continue button redirect to placeorder page
 - redirect user to shipping page if user have not enter shipping address
 
-XIII. PlaceOrderScreen-frontend and Place Order API-backend
+XIII. PlaceOrderScreen
+frontend
 
 1. create PlaceOrderScreen and add it to app
 
@@ -145,45 +158,47 @@ XIII. PlaceOrderScreen-frontend and Place Order API-backend
   - col-2: shipping & payment info
   - col-1: summary order with a place order button
 - create redux tasks-constants,action-createOrder,reducer, store
+  backend
 
-2. create Place Order API-createOrder
+1. create Place Order API-createOrder
 
 - orderModel, orderRouter.post('/')
 - add orderRouter to server
 - create middleware isAuth in utils to authenticate req
 
-XIV. OrderScreen-frontend & Order Screen API-backend
+XIV. OrderScreen
+frontend
 
 1. create OrderScreen and add it to app
 
-- create row with columns of shipping + payment info and summary order
+- create row with columns of shipping + payment info and summary order + paypal button
+- adding condition for if isAdmin, showing Deliver Order button
 - create redux tasks-constants,action-detailsOrder,reducer, store
+- create redux tasks-constants, action-deliverOrder,reducer, store
 
-2. create Order Screen API-detailsOrder
-
-- orderRouter.get('/:id)
-
-3. Implement paypal button in OrderScreen
-   frontend
+2. Implement paypal button
 
 - getting Client Id for paypal from developer.paypal.com
 - add Client Id in .env of the app
 - npm i react-paypal-button-v2 in frontend
 - create redux tasks constants,action-payOrder, reducer, store
+  backend
 
-backend
+1. create Order Screen API-detailsOrder
 
-- create api address for paypal client id in server-backend
+- orderRouter.get('/:id)
+- create api address for paypal client id in server
 - add more properties for orderModel and create orderRouter.put('/:id/pay')
 
-XV. Implement OrderHistoryScreen
+XV. OrderHistoryScreen
+backend
 
-1. backend
+1. create api address to get list of history order-orderRouter.get(
+   "/mylist")
 
-- create api address to get list of history order-orderRouter.get(
-  "/mylist")
+frontend
 
-2. frontend
+1. implement the screen
 
 - create OrderHistoryScreen and add it to app
 - render a table of ID,DATE,TOTAL,PAID,DELIVERED AND ACTIONS
@@ -191,30 +206,33 @@ XV. Implement OrderHistoryScreen
 - apply redux tasks using useSelector and useEffect
 - design table in index.css
 
-XVI. Implement ProfileScreen
+XVI.ProfileScreen
+backend
 
-1. backend
+1. create api address to get user-userRouter.get('/:id')
+2. create api address to update user-userRouter.put('/profile')
 
-- create api address to get user-userRouter.get('/:id')
-- create api address to update user-userRouter.put('/profile')
+frontend
 
-2. frontend
+1. implement the screen
 
 - create ProfileScreen and add it to app
 - render a form of Name, Email, Password, Confirm Password with a handleSubmit event
 - create redux tasks constants, action-detailsUser, reducer, store
 - apply redux tasks using useSelector and useEffect
 - create jsconfig.json to auto import functionality in react project
-- implement handleSubmit event:
 
-* create redux tasks constant, action-updateUserProfile, reducer, store
-* apply redux tasks using useSelector and useEffect
-* create component PrivateRoute.js to avoid error because unauthenticated user should not see ProfileScreen
+2. implement handleSubmit event:
+
+- create redux tasks constant, action-updateUserProfile, reducer, store
+- apply redux tasks using useSelector and useEffect
+- create component PrivateRoute.js to avoid error because unauthenticated user should not see ProfileScreen
 
 XVII. Admin view
-Products:
 
-- frontend
+=> Products:
+
+frontend
 
 1.  adding another dropdown in the header of the app for only admin to see that renders Dashboard, Products,Orders, User
 2.  create component AdminRoute.js
@@ -238,24 +256,30 @@ Products:
 
 5. implement delete button:
    . create redux tasks constanta, action-deleteProduct, reducer, store
-
-Products
-
-- backend
+   backend
 
 1. create isAdmin in utils.js
-2. create api address for creating product-productRouter.post('/')
-3. create api address for updating product-productRouter.put('/:id')
-4. create UploadRouter.js
+1. create api address for creating product-productRouter.post('/')
+1. create api address for updating product-productRouter.put('/:id')
+1. create UploadRouter.js
    . creat api address for uploading image-uploadRouter.post('/)
    . in the main folder:
    - npm i multer
    - create uploads -> file.txt
      . add the api address for uploading image in server
 
-List Orders
+=> List Orders:
 frontend:
+
+1. create OrderListScreen
+   . render a form of ID, USER, DATE, TOTAL, PAID, DELIVERED, and ACTIONS with 2 button details and delete
+   . create redux tasks constant, action-listOrders, reducer and store
+   . button details raise an event to redirect to OrderScreen to see info and manage Deliver Order button
+   . button delete - implement button delete:
+   - create redux tasks constant, action-deleteOrder, reducer and store
 
 backend:
 
-1. create apid address to get all orders - orderRouter.get('/')
+1. create apid address to get all orders - orderRouter.get('/') vs using populate() method to populate user and name
+2. create api address for delete - orderRouter.delete('/:id')
+3. create api address for deliver - orderRouter.put('/:id/deliver)
