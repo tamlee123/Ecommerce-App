@@ -153,7 +153,7 @@ export const deleteOrder = (orderId) => async (dispatch, getState) => {
   }
 };
 
-export const deliveryOrder = (orderId) => async (dispatch, getState) => {
+export const deliverOrder = (orderId) => async (dispatch, getState) => {
   dispatch({ type: ORDER_DELIVER_REQUEST, payload: orderId });
   const {
     userSignin: { userInfo },
