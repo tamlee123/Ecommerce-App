@@ -89,6 +89,7 @@ ProductScreen:
 - implement handleCheckout to redirect users to shipping
 
 VIII. Connect to MongoDB
+
 backend
 
 1. npm i mongoose
@@ -102,7 +103,9 @@ backend
 4. create model and router for product then add product router to server
 
 VIV. create SigninScreen & adding Sign Out Link on the app header
+
 frontend
+
 SigninScreen:
 
 1. form-event handleSubmit-render email and password
@@ -113,6 +116,7 @@ SigninScreen:
 - create signout action
 
 X. RegisterScreen
+
 backend
 
 1. create router for register-userRouter.post(
@@ -126,6 +130,7 @@ frontend
 - create redux task for RegisterScreen-constant,action-register,reducer, store
 
 XI. ShippingAddressScreen
+
 frontend
 
 1. create steps for checkout-CheckoutSteps.js
@@ -138,6 +143,7 @@ frontend
 - implement continue button redirect to payment page
 
 XII. PaymentMethodScreen
+
 frontend
 
 1. create PaymentMethodScreen and add it to app
@@ -149,6 +155,7 @@ frontend
 - redirect user to shipping page if user have not enter shipping address
 
 XIII. PlaceOrderScreen
+
 frontend
 
 1. create PlaceOrderScreen and add it to app
@@ -167,6 +174,7 @@ frontend
 - create middleware isAuth in utils to authenticate req
 
 XIV. OrderScreen
+
 frontend
 
 1. create OrderScreen and add it to app
@@ -191,6 +199,7 @@ frontend
 - add more properties for orderModel and create orderRouter.put('/:id/pay')
 
 XV. OrderHistoryScreen
+
 backend
 
 1. create api address to get list of history order-orderRouter.get(
@@ -207,6 +216,7 @@ frontend
 - design table in index.css
 
 XVI.ProfileScreen
+
 backend
 
 1. create api address to get user-userRouter.get('/:id')
@@ -256,7 +266,8 @@ frontend
 
 5. implement delete button:
    . create redux tasks constanta, action-deleteProduct, reducer, store
-   backend
+
+backend
 
 1. create isAdmin in utils.js
 1. create api address for creating product-productRouter.post('/')
@@ -269,7 +280,8 @@ frontend
      . add the api address for uploading image in server
 
 => List Orders:
-frontend:
+
+frontend
 
 1. create OrderListScreen
    . render a form of ID, USER, DATE, TOTAL, PAID, DELIVERED, and ACTIONS with 2 button details and delete
@@ -278,8 +290,23 @@ frontend:
    . button delete - implement button delete:
    - create redux tasks constant, action-deleteOrder, reducer and store
 
-backend:
+backend
 
 1. create apid address to get all orders - orderRouter.get('/') vs using populate() method to populate user and name
 2. create api address for delete - orderRouter.delete('/:id')
 3. create api address for deliver - orderRouter.put('/:id/deliver)
+
+XVIII: Deploy to Heroku
+
+1. heroku account and heroku cli
+2. heroku login and heroku apps:create
+3. pakage.json
+   "scripts": {
+   "build": "cd frontend && npm install && npm run build",
+   "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+   Adding engines: to set the node and npm version on heroku server
+   "engines": {"node": "12.18.3", "npm": "6.14.6"}
+4. procfile
+5. create cloud databse
+6. heroku config:set
+7. git push heroku
