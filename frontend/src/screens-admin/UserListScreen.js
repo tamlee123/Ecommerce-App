@@ -4,6 +4,7 @@ import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../actions/userActions";
 import { deleteUser } from "./../actions/userActions";
+import { USER_DETAILS_RESET } from "../constants/userConstant";
 
 function UserListScreen(props) {
   const userList = useSelector((state) => state.userList);
@@ -19,6 +20,7 @@ function UserListScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listUsers());
+    dispatch({ type: USER_DETAILS_RESET });
   }, [dispatch, successDelete]);
 
   const handleDelete = (user) => {
