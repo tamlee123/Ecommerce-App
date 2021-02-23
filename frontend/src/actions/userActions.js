@@ -1,5 +1,4 @@
 import axios from "axios";
-import { get } from "mongoose";
 import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_FAIL,

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../actions/userActions";
 import { deleteUser } from "./../actions/userActions";
 
-const UserListScreen = () => {
+function UserListScreen(props) {
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
@@ -59,7 +59,11 @@ const UserListScreen = () => {
                 <td>{user.isSeller ? "Yes" : "No"}</td>
                 <td>{user.isAdmin ? "Yes" : "No"}</td>
                 <td>
-                  <button type="button" className="small">
+                  <button
+                    type="button"
+                    className="small"
+                    onClick={() => props.history.push(`/user/${user._id}/edit`)}
+                  >
                     Edit
                   </button>
                   <button
@@ -77,6 +81,6 @@ const UserListScreen = () => {
       )}
     </div>
   );
-};
+}
 
 export default UserListScreen;
