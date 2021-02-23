@@ -270,9 +270,9 @@ frontend
 backend
 
 1. create isAdmin in utils.js
-1. create api address for creating product-productRouter.post('/')
-1. create api address for updating product-productRouter.put('/:id')
-1. create UploadRouter.js
+2. create api address for creating product-productRouter.post('/')
+3. create api address for updating product-productRouter.put('/:id')
+4. create UploadRouter.js
    . creat api address for uploading image-uploadRouter.post('/)
    . in the main folder:
    - npm i multer
@@ -286,15 +286,30 @@ frontend
 1. create OrderListScreen
    . render a form of ID, USER, DATE, TOTAL, PAID, DELIVERED, and ACTIONS with 2 button details and delete
    . create redux tasks constant, action-listOrders, reducer and store
-   . button details raise an event to redirect to OrderScreen to see info and manage Deliver Order button
-   . button delete - implement button delete:
-   - create redux tasks constant, action-deleteOrder, reducer and store
+2. button details raise an event to redirect to OrderScreen to see info and manage Deliver Order button
+3. button delete - implement button delete:
+   . create redux tasks constant, action-deleteOrder, reducer and store
 
 backend
 
 1. create apid address to get all orders - orderRouter.get('/') vs using populate() method to populate user and name
 2. create api address for delete - orderRouter.delete('/:id')
 3. create api address for deliver - orderRouter.put('/:id/deliver)
+
+Users
+
+frontend
+
+1. create UserListScreen and add it to app
+   . render a form of ID, NAME, EMAIL, IS SELLER, IS ADMIN and ACTIONS of edit and delete buttons
+   . create redux tasks constant, action-listUsers, reducer and store
+2. implement delete button
+   . create redux tasks constant, action-deleteUser, reducer and store
+
+backend
+
+1. create api address for getting all users - userRouter.get('/')
+2. create api address for deleting user - userRouter.delete('/:id'), condition: can not delete user if user is admin
 
 XVIII: Deploy to Heroku
 
