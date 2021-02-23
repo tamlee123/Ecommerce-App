@@ -279,12 +279,12 @@ backend
    - create uploads -> file.txt
      . add the api address for uploading image in server
 
-=> List Orders:
+=> Orders:
 
 frontend
 
 1. create OrderListScreen
-   . render a form of ID, USER, DATE, TOTAL, PAID, DELIVERED, and ACTIONS with 2 button details and delete
+   . render a table of ID, USER, DATE, TOTAL, PAID, DELIVERED, and ACTIONS with 2 button details and delete
    . create redux tasks constant, action-listOrders, reducer and store
 2. button details raise an event to redirect to OrderScreen to see info and manage Deliver Order button
 3. button delete - implement button delete:
@@ -301,10 +301,13 @@ Users
 frontend
 
 1. create UserListScreen and add it to app
-   . render a form of ID, NAME, EMAIL, IS SELLER, IS ADMIN and ACTIONS of edit and delete buttons
+   . render a table of ID, NAME, EMAIL, IS SELLER, IS ADMIN and ACTIONS of edit and delete buttons
    . create redux tasks constant, action-listUsers, reducer and store
 2. implement delete button
    . create redux tasks constant, action-deleteUser, reducer and store
+3. implement edit button
+   . create UserEditScreen and add it to app
+   - render a form
 
 backend
 
