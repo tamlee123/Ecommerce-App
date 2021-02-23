@@ -28,7 +28,7 @@ body {
 }
 header {
   grid-area: header;
-  background-color: #203040;
+  background-color: #aa4161;
 }
 main {
   grid-area: main;
@@ -36,8 +36,8 @@ main {
 }
 footer {
   grid-area: footer;
-  background-color: #203040;
-  color: #ffffff;
+  background-color: #aa4161;
+  color: rgb(255, 255, 255);
 }
 /* Common */
 h1 {
