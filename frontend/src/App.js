@@ -148,7 +148,7 @@ function App() {
             component={ProductListScreen}
           ></SellerRoute>
           <SellerRoute
-            path="/odertlist/seller"
+            path="/orderlist/seller"
             component={OrderListScreen}
           ></SellerRoute>
           <Route path="/" component={HomeScreen} exact></Route>
