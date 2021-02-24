@@ -112,6 +112,17 @@ function ProductEditScreen(props) {
             </div>
 
             <div>
+              <label htmlFor="price">Price</label>
+              <input
+                id="price"
+                type="text"
+                placeholder="Enter price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              ></input>
+            </div>
+
+            <div>
               <label htmlFor="image">Image</label>
               <input
                 id="image"
