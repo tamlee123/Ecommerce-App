@@ -43,7 +43,7 @@ function ProfileScreen(props) {
         setSellerDescription(user.seller.description);
       }
     }
-  }, [dispatch, userInfo._id, user, sellerName, sellerLogo, sellerDescription]);
+  }, [dispatch, userInfo._id, user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -152,7 +152,7 @@ function ProfileScreen(props) {
                   ></input>
                 </div>
                 <div>
-                  <label htmlFor="sellerDescription">Seller Logo</label>\
+                  <label htmlFor="sellerDescription">Seller Description</label>\
                   <input
                     id="sellerDescription"
                     type="text"

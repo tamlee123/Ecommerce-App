@@ -7,11 +7,12 @@ import MessageBox from "./../components/MessageBox";
 import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
-  const dispatch = useDispatch();
   const productId = props.match.params.id;
   const [qty, setQty] = useState(1); // the default value for qty=1
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
@@ -59,6 +60,18 @@ function ProductScreen(props) {
             <div className="col-1">
               <div className="card card-body">
                 <ul>
+                  <li>
+                    Seller{" "}
+                    <h2>
+                      <Link to={`/seller/${product.seller._id}`}>
+                        {product.seller.seller.name}
+                      </Link>
+                    </h2>
+                    <Rating
+                      rating={product.seller.seller.rating}
+                      numReviews={product.seller.seller.numReviews}
+                    ></Rating>
+                  </li>
                   <li>
                     <div className="row">
                       <div>Price</div>

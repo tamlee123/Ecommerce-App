@@ -238,7 +238,8 @@ frontend
 - apply redux tasks using useSelector and useEffect
 - create component PrivateRoute.js to avoid error because unauthenticated user should not see ProfileScreen
 
-XVII. Admin view
+XVII.
+Admin view:
 
 => Products:
 
@@ -319,7 +320,36 @@ backend
 2. create api address for deleting user - userRouter.delete('/:id'), condition: can not delete user if user is admin
 3. create api address for update - userRouter.put('/:id')
 
-XVIII: Deploy to Heroku
+Seller View:
+
+- adding Seller with 2 dropdown links Products and Orders
+- list products and orders for seller using actions listProducts and listOrders vs adding object seller: { seller = "" }, ?seller=\${seller}
+- create sellerMode in ProductListScreen and OrderListScreen
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;
+  Dispatch products and orders which only belong to seller
+  { seller: sellerMode ? userInfo.\_id : "" }
+  -adding seller to productModel, orderModel, and userModel
+  -creating address for seller on orderRouter and productRouter
+
+XVIII: Create Seller Page
+
+1. Adding a link of seller name next to product price which will redirect to seller information
+   Product.js
+2. SellerScreen
+   Frontend
+
+   - Create SellerScreen and add it to app
+     . Apply detailsUser and listProducts
+     . Render a row with 2 columns:
+     . 1stCol: seller name, logo, rating and reviews and Contact seller
+     . 2ndCol: products information
+   - ProductScreen: adding seller information to product detail
+     Backend
+   - In productRouter.get( "/") => populate "seller", "seller.name seller.logo"
+   - In detail product router: productRouter.get( "/:id")=> populate "seller",
+     "seller.name seller.logo seller.rating seller.numReviews"
+
+Deploy to Heroku
 
 1. heroku account and heroku cli
 2. heroku login and heroku apps:create
