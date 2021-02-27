@@ -23,7 +23,7 @@ function UserListScreen(props) {
     dispatch({ type: USER_DETAILS_RESET });
   }, [dispatch, successDelete]);
 
-  const handleDelete = (user) => {
+  const handleDelete = (user) => {  
     if (window.confirm("Are you sure to delete it?")) {
       dispatch(deleteUser(user._id));
     }
