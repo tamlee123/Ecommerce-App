@@ -35,16 +35,20 @@ function HomeScreen() {
       ) : (
         <>
           {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-          <Carousel showArrows autoPlay showThumbs={false}>
-            {sellers.map((seller) => (
-              <div key={seller._id}>
-                <Link to={`/seller/${seller._id}`}>
-                  <img src={seller.seller.logo} alt={seller.seller.name} />
-                  <p className="legend">{seller.seller.name}</p>
-                </Link>
-              </div>
-            ))}
-          </Carousel>
+          <div className="carousel-container">
+            <Carousel showArrows autoPlay showThumbs={false}>
+              {sellers.map((seller) => (
+                <div className="style" key={seller._id}>
+                  <Link to={`/seller/${seller._id}`}>
+                    <img src={seller.seller.logo} alt={seller.seller.name} />
+                    <div className="style">
+                      <p className="legend">{seller.seller.name}</p>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </Carousel>
+          </div>
         </>
       )}
       <h2>Featured Products</h2>

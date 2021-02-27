@@ -276,6 +276,13 @@ img.large {
   margin: 0 0.2rem;
 }
 /* Carousel */
+
 .carousel .slide img {
   max-width: 30rem;
+}
+.carousel-container .carousel .slide {
+  background: #ffe6e6;
+}
+.carousel-container .carousel .style .legend {
+  background: rgb(175, 73, 99);
 }
