@@ -349,6 +349,47 @@ XVIII: Create Seller Page
    - In detail product router: productRouter.get( "/:id")=> populate "seller",
      "seller.name seller.logo seller.rating seller.numReviews"
 
+XIX: Implement Top Seller Carousel in HomeScreen and Force user order product from one seller at a time
+
+1. install react carousel in frontend
+   npm i react-responsive-carousel
+2. HomeScreen.js
+
+Frontend
+
+- import 'react-responsive-carousel/lib/styles/carousel.min.css';
+- import {Carousel} from 'react-responsive-carousel';
+- Create redux tasks - constants, action-listTopSellers, reducer, store
+
+3. Implement force user order product from one seller at a time
+
+- Create case ADD_CART_ITEM_FAIL in redux tasks and apply it in CartScreen
+
+Backend
+
+- create api address for top sellers - userRouter.get("/top-sellers")
+
+XX: Search and sort products
+
+1. Create a component SearchBox.js
+
+- Return a form that renders a row input and raise an envent handleSubmit which redirects user to SearchScreen
+- Adding SearchBox to app
+
+2. Create SearchScreen.js and add it to app
+   fontend
+
+- Using action listProducts and component Product.js
+  (listProducts takes parameter name, so have to add name in action)
+- Return number of product result and features in Product or Product Not Found
+
+Backend:
+
+- productRouter.get(“/”)
+  . query and filter name
+
+1.
+
 Deploy to Heroku
 
 1. heroku account and heroku cli
