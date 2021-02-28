@@ -286,3 +286,15 @@ img.large {
 .carousel-container .carousel .style .legend {
   background: rgb(175, 73, 99);
 }
+
+/* Search */
+.search button {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-right: none;
+  margin-right: 0.5rem;
+}
+.search input {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+  border-left: 0.5rem;
+}
