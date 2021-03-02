@@ -9,8 +9,8 @@ const productRouter = express.Router();
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const seller = req.query.seller || "";
     const name = req.query.name || "";
+    const seller = req.query.seller || "";
     const category = req.query.category || "";
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
@@ -20,12 +20,21 @@ productRouter.get(
       req.query.rating && Number(req.query.rating) !== 0
         ? Number(req.query.rating)
         : 0;
+    const order = req.query.order || "";
 
-    const sellerFilter = seller ? { seller } : {};
     const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
+    const sellerFilter = seller ? { seller } : {};
     const categoryFilter = category ? { category } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
     const ratingFilter = rating ? { rating: { $gte: rating } } : {};
+    const sortOrder =
+      order === "lowest"
+        ? { price: 1 }
+        : order === "highest"
+        ? { price: -1 }
+        : order === "toprated"
+        ? { rating: -1 }
+        : { _id: -1 };
 
     const products = await Product.find({
       ...sellerFilter,
@@ -33,7 +42,9 @@ productRouter.get(
       ...categoryFilter,
       ...priceFilter,
       ...ratingFilter,
-    }).populate("seller", "seller.name seller.logo");
+    })
+      .populate("seller", "seller.name seller.logo")
+      .sort(sortOrder);
     res.send(products);
   })
 );

@@ -15,6 +15,7 @@ function SearchScreen(props) {
     min = 0,
     max = 0,
     rating = 0,
+    order = "newest",
   } = useParams();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
@@ -35,17 +36,19 @@ function SearchScreen(props) {
         min,
         max,
         rating,
+        order,
       })
     );
-  }, [dispatch, name, category, min, max, rating]);
+  }, [dispatch, name, category, min, max, rating, order]);
 
   const getFilterUrl = (filter) => {
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
     const filterRating = filter.rating || rating;
+    const sortOrder = filter.order || order;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}`;
+    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}`;
   };
 
   return (
@@ -58,6 +61,20 @@ function SearchScreen(props) {
         ) : (
           <div>{products.length} Result</div>
         )}
+        <div>
+          Sort By{" "}
+          <select
+            value={order}
+            onChange={(e) => {
+              props.history.push(getFilterUrl({ order: e.target.value }));
+            }}
+          >
+            <option value="newest">Newest Arivals</option>
+            <option value="lowest">Price: Low to Hight</option>
+            <option value="highest">Price: Hight to Low</option>
+            <option value="toprated">Avg. Customer Reviews</option>
+          </select>
+        </div>
       </div>
 
       <div className="row top">
