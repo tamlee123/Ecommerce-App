@@ -388,7 +388,24 @@ Backend:
 - productRouter.get(“/”)
   . query and filter name
 
-1.
+XXI: Implement Category sidebar and filter
+
+1. Display categories on SearchScreen
+   frontend
+
+- Create redux tasks - constant, action-listProductCategories, reducer, store
+- render a list of categories using map method and getFilterUrl
+  backend
+- in productRouter.get("/") query and filter categories
+- create api address for categories - productRouter.get("/categories")
+
+3. app.js
+
+- apply redux store - action listProductCatories
+- Render a button to open and close sidebar
+- sidebar - Render aside and list of categories in aside
+
+4.  Design sidebar in css
 
 Deploy to Heroku
 
