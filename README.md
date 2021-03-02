@@ -408,6 +408,39 @@ Implement Category sidebar and filter
 
 4.  Design sidebar in css
 
+Implement price and rating on SearchScreen
+fontend
+
+1. Create utils.js in src
+
+- Create an array for prices which contains names for levels of price with min and max
+- Create an array for rating which contain names for 5 levels of star
+
+2. SearchScreen
+
+- Import utils
+- Adding min and max, and rating in useParams() and listProducts
+- Create filter for min, max and rating
+- Render links for levels of prices and rating using method map and function getFilterUrl()
+
+3. App.js
+
+- Adding mon, max, and rating in the path for SearchScreen Route
+  backend
+
+1. in productRouter.get("/") query and filter min, max for price filter, and query and filter rating
+
+Implement Sort By box on SearchScreen
+frontend
+
+1. Adding order in useParams() and listProducts and create sortOrder
+2. Right after render Result => render Sort By box which has select value={order} and raise an event to redirect according to 4 options newest arrival, low to hight, high to low, and top rated by customer reviews
+3. Adding order in the path for SearchScreen Route
+
+Backend
+
+1. in productRouter.get("/") query and sort order
+
 Deploy to Heroku
 
 1. heroku account and heroku cli
