@@ -370,6 +370,7 @@ Backend
 - create api address for top sellers - userRouter.get("/top-sellers")
 
 XX: Search and sort products
+Searching by name in searc box
 
 1. Create a component SearchBox.js
 
@@ -388,7 +389,7 @@ Backend:
 - productRouter.get(“/”)
   . query and filter name
 
-XXI: Implement Category sidebar and filter
+Implement Category sidebar and filter
 
 1. Display categories on SearchScreen
    frontend
