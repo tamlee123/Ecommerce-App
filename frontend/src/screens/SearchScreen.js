@@ -5,10 +5,17 @@ import { Link, useParams } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Product from "./../components/Product";
-import { prices } from "../utils";
+import { prices, ratings } from "../utils";
+import Rating from "../components/Rating";
 
 function SearchScreen(props) {
-  const { name = "all", category = "all", min = 0, max = 0 } = useParams();
+  const {
+    name = "all",
+    category = "all",
+    min = 0,
+    max = 0,
+    rating = 0,
+  } = useParams();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -27,16 +34,18 @@ function SearchScreen(props) {
         category: category !== "all" ? category : "",
         min,
         max,
+        rating,
       })
     );
-  }, [dispatch, name, category, min, max]);
+  }, [dispatch, name, category, min, max, rating]);
 
   const getFilterUrl = (filter) => {
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
+    const filterRating = filter.rating || rating;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}`;
+    return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}`;
   };
 
   return (
@@ -61,6 +70,14 @@ function SearchScreen(props) {
               <MessageBox variant="danger">{errorCategories}</MessageBox>
             ) : (
               <ul>
+                <li>
+                  <Link
+                    className={"all" === category ? "active" : ""}
+                    to={getFilterUrl({ category: "all" })}
+                  >
+                    Any
+                  </Link>
+                </li>
                 {categories.map((c) => (
                   <li key={c}>
                     <Link
@@ -87,6 +104,22 @@ function SearchScreen(props) {
                     }
                   >
                     {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3>Avg. Customer Review</h3>
+            <ul>
+              {ratings.map((r) => (
+                <li key={r.name}>
+                  <Link
+                    to={getFilterUrl({ rating: r.rating })}
+                    className={`${r.rating}` === `${rating}` ? "active" : ""}
+                  >
+                    <Rating caption={"& up"} rating={r.rating}></Rating>
                   </Link>
                 </li>
               ))}
