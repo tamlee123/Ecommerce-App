@@ -23,7 +23,7 @@ export default function ShippingAddressScreen(props) {
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
   const dispatch = useDispatch();
-  const submitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newLat = addressMap ? addressMap.lat : lat;
     const newLng = addressMap ? addressMap.lng : lng;
@@ -69,7 +69,7 @@ export default function ShippingAddressScreen(props) {
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
+      <form className="form" onSubmit={handleSubmit}>
         <div>
           <h1>Shipping Address</h1>
         </div>
