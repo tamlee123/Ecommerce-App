@@ -458,6 +458,24 @@ Backend
 - customer can only rate star for a product one time
 - calculate product rating using reduce method
 
+XXII: choose address on google map
+
+1. Create project on google cloud platform to get the google api key - add this key to .env of the main app
+
+2. frontend
+
+- npm i @react-google-maps/api
+- Create MapScreen which contains a text box for typing address and add it to app
+- ShippingAddressScreen:
+  . using MapScreen to get lat and lng
+
+3. backend
+
+- server.js
+  . create api address for GOOGLE_API_KEY
+- orderModel.js
+  . adding lat and lng on shippingAddress
+
 Deploy to Heroku
 
 1. heroku account and heroku cli
