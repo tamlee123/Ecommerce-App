@@ -145,9 +145,9 @@ a.brand {
 /* Aside */
 aside {
   position: fixed;
-  width: 30rem;
+  width: 25rem;
   height: 100%;
-  background-color: #efefef;
+  background-color: #ffffff;
   z-index: 1000;
   transform: translateX(-30rem);
   transition: all 0.5s;
