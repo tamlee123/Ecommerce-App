@@ -441,6 +441,23 @@ Backend
 
 1. in productRouter.get("/") query and sort order
 
+XXI: Implement rating and comment from customers on ProductScreen
+frontend
+
+1. ProductScreen
+
+- Create redux tasks - constant, action-createReview, reducer, store
+- Render a form which raises 2 events one for select rating option and the other for comment
+- Render button submit for review
+
+Backend
+
+1. productRouter.js
+   -. Create api address for review: productRouter.post( "/:id/reviews")
+
+- customer can only rate star for a product one time
+- calculate product rating using reduce method
+
 Deploy to Heroku
 
 1. heroku account and heroku cli
