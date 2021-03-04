@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams, Link } from "react-router-dom";
 import {
   createProduct,
   listProducts,
@@ -13,9 +14,10 @@ import {
 } from "../constants/productConstant";
 
 function ProductListScreen(props) {
+  const { pageNumber = 1 } = useParams();
   const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, page, pages } = productList;
 
   const productCreate = useSelector((state) => state.productCreate);
   const {
@@ -34,6 +36,7 @@ function ProductListScreen(props) {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
@@ -43,7 +46,9 @@ function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts({ seller: sellerMode ? userInfo._id : "" }));
+    dispatch(
+      listProducts({ seller: sellerMode ? userInfo._id : "", pageNumber })
+    );
   }, [
     createdProduct,
     dispatch,
@@ -52,6 +57,7 @@ function ProductListScreen(props) {
     successCreate,
     successDelete,
     userInfo._id,
+    pageNumber,
   ]);
 
   const handleDelete = (product) => {
@@ -125,6 +131,17 @@ function ProductListScreen(props) {
               ))}
             </tbody>
           </table>
+          <div className="row center pagination">
+            {[...Array(pages).keys()].map((x) => (
+              <Link
+                className={x + 1 === page ? "active" : ""}
+                key={x + 1}
+                to={`/productlist/pageNumber/${x + 1}`}
+              >
+                {x + 1}
+              </Link>
+            ))}
+          </div>
         </>
       )}
     </div>
