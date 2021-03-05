@@ -63,7 +63,7 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              Sleep-well
+              Sleep-Well
             </Link>
           </div>
 
@@ -77,7 +77,7 @@ function App() {
 
           <div>
             <Link to="/cart">
-              Cart
+              <i className="fa fa-shopping-cart"></i>
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
@@ -248,7 +248,11 @@ function App() {
             exact
           ></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">
+          <i className="fa fa-facebook-f"></i>
+          <i className="fa fa-twitter-square"></i>
+          <i className="fa fa-instagram"></i>
+        </footer>
       </div>
     </BrowserRouter>
   );
