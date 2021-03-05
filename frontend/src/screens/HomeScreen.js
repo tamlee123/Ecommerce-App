@@ -29,7 +29,7 @@ function HomeScreen() {
   }, [dispatch, pageNumber]);
   return (
     <div>
-      <h2>Top Sellers</h2>
+      <h2>Best Sellers</h2>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (
@@ -38,7 +38,7 @@ function HomeScreen() {
         <>
           {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
           <div className="carousel-container">
-            <Carousel showArrows autoPlay showThumbs={false}>
+            <Carousel showArrows autoPlay active showThumbs={false}>
               {sellers.map((seller) => (
                 <div className="style" key={seller._id}>
                   <Link to={`/seller/${seller._id}`}>
