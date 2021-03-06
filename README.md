@@ -1,4 +1,4 @@
-I. Create template for sleep-well
+I. Create template for emme
 
 1. index.html(link to style.css)
 
