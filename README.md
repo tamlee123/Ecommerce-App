@@ -476,6 +476,34 @@ XXII: choose address on google map
 - orderModel.js
   . adding lat and lng on shippingAddress
 
+XXII: Implement Pagination
+
+1. add pagination to product router in backend
+2. apply page number to actions and reducers in frontend
+3. show page numbers in SearchScreen, HomeScreen, and ProductListScreen
+
+XXIII: Email Order Receive By mailgun
+
+1. set MAILGUN_API_KEY and MAILGUN_DOMAIN in .env
+2. Main root: npm i mailgun-js
+
+- Ultils.js:
+  . export const mailgun = mg({
+  apikey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+  });
+  . Create function payOrderEmailTemplate
+
+3. Implement mailgun in orderRouter.put( "/:id/pay")
+
+XXIV: Upload product images on AWS S3 - amazon web service
+
+1. Create root user aws account
+2. Sign in console and find amazon s3
+3. Create a bucket
+4. set access keys in .env
+5. npm i aws-sdk multer-s3
+
 Deploy to Heroku
 
 1. heroku account and heroku cli
