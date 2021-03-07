@@ -248,10 +248,31 @@ function App() {
             exact
           ></Route>
         </main>
-        <footer className="row center">
-          <i className="fa fa-facebook-f"></i>
-          <i className="fa fa-twitter-square"></i>
-          <i className="fa fa-instagram"></i>
+        <footer>
+          <div className="row">
+            <div>
+              <ul>
+                <p>About Us:</p>
+                <li>Company Info</li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <p>Follow Us:</p>
+                <i className="fa fa-facebook-f"></i>
+                <i className="fa fa-twitter-square"></i>
+                <i className="fa fa-instagram"></i>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <p>Customer Service:</p>
+                <li>Contact Us</li>
+                <li>Retrun Policy</li>
+                <li>Shipping Information</li>
+              </ul>
+            </div>
+          </div>
         </footer>
       </div>
     </BrowserRouter>
