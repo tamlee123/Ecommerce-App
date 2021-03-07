@@ -9,7 +9,7 @@ const data = {
       isSeller: true,
       seller: {
         name: "Cherry",
-        logo: "/images/logo1.jpg",
+        logo: "/images/logo2.jpg",
         description: "best seller",
         rating: 4.5,
         numReviews: 200,
