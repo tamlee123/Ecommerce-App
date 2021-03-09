@@ -61,7 +61,7 @@ const data = {
     {
       name: "Gucci Flora",
       category: "Perfume",
-      image: "/images/p7.jpg",
+      image: "/images/p7.png",
       price: 118,
       countInStock: 0,
       brand: "Gucci",
