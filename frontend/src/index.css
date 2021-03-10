@@ -23,7 +23,7 @@ body {
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 6rem 1fr 15rem;
+  grid-template-rows: 8rem 1fr 15rem;
   height: 100%;
 }
 header {
@@ -327,7 +327,7 @@ img.large {
 
 .carousel .slide img {
   max-width: 40%;
-  height: 20rem;
+  height: 25rem;
 }
 .carousel-container .carousel .slide {
   background: #e9e774;
