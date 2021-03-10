@@ -106,7 +106,7 @@ header a {
 }
 a.brand {
   color: #e60606;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 .badge {
@@ -141,9 +141,7 @@ a.brand {
 .col-3 {
   flex: 32 1 75rem;
 }
-.col-4 {
-  align-items: center;
-}
+
 .min-30 {
   min-width: 30rem;
 }
@@ -391,7 +389,7 @@ img.large {
   font-weight: bold;
 }
 
-i {
+footer i {
   display: inline-block;
   margin-right: 1em;
 }
