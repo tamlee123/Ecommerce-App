@@ -268,7 +268,7 @@ function App() {
               <ul>
                 <p>Customer Service:</p>
                 <li>Contact Us</li>
-                <li>Retrun Policy</li>
+                <li>Return Policy</li>
                 <li>Shipping Information</li>
               </ul>
             </div>
