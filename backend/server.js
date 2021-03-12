@@ -17,8 +17,7 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/emme", {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/api/uploads", uploadRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
