@@ -41,8 +41,14 @@ userRouter.post(
         });
         return;
       }
+      res.status(401).send({ message: "Invalid email or password" });
     }
-    res.status(401).send({ message: "Invalid email or password" });
+    if (!user) {
+      res.status(400).send({
+        message:
+          "Please register an account with us first - click Create your account below",
+      });
+    }
   })
 );
 
