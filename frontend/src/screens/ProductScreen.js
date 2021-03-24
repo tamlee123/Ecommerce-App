@@ -111,7 +111,7 @@ function ProductScreen(props) {
                   </li>
                   <li>
                     <div className="row">
-                      <div>Staus</div>
+                      <div>Status</div>
 
                       <div>
                         {product.countInStock > 0 ? (
