@@ -66,7 +66,6 @@ function App() {
               emme
             </Link>
           </div>
-
           <div>
             <Route
               render={({ history }) => (
@@ -74,7 +73,6 @@ function App() {
               )}
             ></Route>
           </div>
-
           <div>
             <Link to="/cart">
               <i className="fa fa-shopping-cart"></i>
@@ -143,9 +141,9 @@ function App() {
           </div>
         </header>
         <aside className={sidebarIsOpen ? "open" : ""}>
-          <ul className="categories">
+          <ul>
             <li>
-              <strong>Categories</strong>
+              <span className="categories">CATEGORIES</span>
               <button
                 onClick={() => setSidebarIsOpen(false)}
                 className="close-sidebar"

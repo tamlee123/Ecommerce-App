@@ -83,7 +83,7 @@ export default function RegisterScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Register
+            <span className="content">Register</span>
           </button>
         </div>
         <div>

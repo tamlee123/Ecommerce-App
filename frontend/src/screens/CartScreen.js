@@ -99,7 +99,7 @@ function CartScreen(props) {
                 className="primary block"
                 disabled={cartItems.length === 0}
               >
-                Proceed to Checkout
+                <span className="content">Proceed to Checkout</span>
               </button>
             </li>
           </ul>

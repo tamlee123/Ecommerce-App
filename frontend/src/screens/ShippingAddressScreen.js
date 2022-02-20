@@ -137,7 +137,7 @@ export default function ShippingAddressScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Continue
+            <span className="content">Continue</span>
           </button>
         </div>
       </form>

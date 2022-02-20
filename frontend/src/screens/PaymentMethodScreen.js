@@ -56,7 +56,7 @@ function PaymentMethodScreen(props) {
 
         <div>
           <button className="primary" type="submit">
-            Continue
+            <span className="content">Continue</span>
           </button>
         </div>
       </form>

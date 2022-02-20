@@ -63,7 +63,7 @@ function SigninScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Sign In
+            <span className="content">Sign In</span>
           </button>
         </div>
 

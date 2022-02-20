@@ -141,7 +141,7 @@ function PlaceOrderScreen(props) {
                   className="primary block"
                   disabled={cart.cartItems.length === 0}
                 >
-                  Place Order
+                  <span className="content">Place Order</span>
                 </button>
               </li>
               {loading && <LoadingBox></LoadingBox>}

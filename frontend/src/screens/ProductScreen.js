@@ -148,7 +148,7 @@ function ProductScreen(props) {
                           onClick={addToCartHandler}
                           className="primary block"
                         >
-                          Add to Card
+                          <span className="content">Add to Card</span>
                         </button>
                       </li>
                     </>
@@ -203,7 +203,7 @@ function ProductScreen(props) {
                     <div>
                       <label />
                       <button className="primary" type="submit">
-                        Submit
+                        <span className="content">Submit</span>
                       </button>
                     </div>
                     <div>
