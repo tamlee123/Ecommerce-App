@@ -59,7 +59,9 @@ function ProductScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div>
-          <Link to="/">Back to Result</Link>
+          <Link to="/" style={{ color: "#000" }}>
+            Back to Result
+          </Link>
           <div className="row top">
             <div className="col-2">
               <img
@@ -94,7 +96,10 @@ function ProductScreen(props) {
                   <li>
                     Seller{" "}
                     <h2>
-                      <Link to={`/seller/${product.seller._id}`}>
+                      <Link
+                        to={`/seller/${product.seller._id}`}
+                        style={{ color: "#000" }}
+                      >
                         {product.seller.seller.name}
                       </Link>
                     </h2>

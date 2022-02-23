@@ -10,7 +10,7 @@ export default function Product(props) {
         <img className="medium" src={product.image} alt={product.name} />
       </Link>
       <div className="card-body">
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`} style={{ color: "#000" }}>
           <h2>{product.name}</h2>
         </Link>
         <Rating
@@ -20,7 +20,10 @@ export default function Product(props) {
         <div className="row">
           <div className="price">${product.price}</div>
           <div>
-            <Link to={`/seller/${product.seller._id}`}>
+            <Link
+              to={`/seller/${product.seller._id}`}
+              style={{ color: "#000" }}
+            >
               {product.seller.seller.name}
             </Link>
           </div>

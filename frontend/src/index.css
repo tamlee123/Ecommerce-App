@@ -157,7 +157,7 @@ aside {
   position: fixed;
   width: 25rem;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #fdefef;
   z-index: 1000;
   transform: translateX(-30rem);
   transition: all 0.5s;
@@ -189,8 +189,12 @@ aside li {
   padding: 1rem;
 }
 aside .categories {
-  font-family: "Bungee", cursive;
+  font-family: "Montserrat", sans-serif;
   color: #11100f;
+}
+aside .link-category {
+  color: #11100f;
+  opacity: 0.7;
 }
 button.close-sidebar {
   padding: 0.3rem 0.8rem;
@@ -253,7 +257,7 @@ img.large {
 }
 .alert-info {
   color: #000;
-  background-color: #b9e6d6;
+  background-color: #fdefef;
 }
 .alert-danger {
   color: #a02020;
@@ -350,6 +354,10 @@ img.large {
 
 .active {
   font-weight: bold;
+}
+.department-link ul a,
+.price-link ul a {
+  color: #000;
 }
 /* Map */
 .full-container {

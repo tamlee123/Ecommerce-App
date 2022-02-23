@@ -91,6 +91,7 @@ function SearchScreen(props) {
               <ul>
                 <li>
                   <Link
+                    style={{ color: "#000" }}
                     className={"all" === category ? "active" : ""}
                     to={getFilterUrl({ category: "all" })}
                   >
@@ -100,6 +101,7 @@ function SearchScreen(props) {
                 {categories.map((c) => (
                   <li key={c}>
                     <Link
+                      style={{ color: "#000" }}
                       className={c === category ? "active" : ""}
                       to={getFilterUrl({ category: c })}
                     >
@@ -117,6 +119,7 @@ function SearchScreen(props) {
               {prices.map((p) => (
                 <li key={p.name}>
                   <Link
+                    style={{ color: "#000" }}
                     to={getFilterUrl({ min: p.min, max: p.max })}
                     className={
                       `${p.min}-${p.max}` === `${min}-${max}` ? "active" : ""
