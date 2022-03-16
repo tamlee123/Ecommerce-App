@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../actions/userActions";
 import { deleteUser } from "./../actions/userActions";
 import { USER_DETAILS_RESET } from "../constants/userConstant";
+import { useNavigate } from "react-router-dom";
 
 function UserListScreen(props) {
+  const navigate = useNavigate();
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
@@ -23,7 +25,7 @@ function UserListScreen(props) {
     dispatch({ type: USER_DETAILS_RESET });
   }, [dispatch, successDelete]);
 
-  const handleDelete = (user) => {  
+  const handleDelete = (user) => {
     if (window.confirm("Are you sure to delete it?")) {
       dispatch(deleteUser(user._id));
     }
@@ -64,7 +66,7 @@ function UserListScreen(props) {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => props.history.push(`/user/${user._id}/edit`)}
+                    onClick={() => navigate(`/user/${user._id}/edit`)}
                   >
                     Edit
                   </button>

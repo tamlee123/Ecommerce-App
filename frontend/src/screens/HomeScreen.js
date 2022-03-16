@@ -29,7 +29,6 @@ function HomeScreen() {
   }, [dispatch, pageNumber]);
   return (
     <div>
-      
       <h2>Best Sellers</h2>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { listProducts } from "./../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Product from "./../components/Product";
@@ -9,6 +9,7 @@ import { prices, ratings } from "../utils";
 import Rating from "../components/Rating";
 
 function SearchScreen(props) {
+  const navigate = useNavigate();
   const {
     name = "all",
     category = "all",
@@ -68,7 +69,7 @@ function SearchScreen(props) {
           <select
             value={order}
             onChange={(e) => {
-              props.history.push(getFilterUrl({ order: e.target.value }));
+              navigate(getFilterUrl({ order: e.target.value }));
             }}
           >
             <option value="newest">Newest Arivals</option>

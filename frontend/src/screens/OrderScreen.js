@@ -10,9 +10,10 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "./../constants/orderConstant";
-
+import { useParams } from "react-router-dom";
 function OrderScreen(props) {
-  const orderId = props.match.params.id;
+  const params = useParams();
+  const { id: orderId } = params;
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
