@@ -11,7 +11,6 @@
     "axios": "^0.26.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-google-maps": "^9.4.5",
     "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.23",
